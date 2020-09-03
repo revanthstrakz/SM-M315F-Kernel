@@ -11,5 +11,10 @@ jobs:
     - name: Build
       run: |
         git submodule update --init --recursive --depth 1
-        chmod a+x m31.sh
-        ./m31.sh
+        export KBUILD_BUILD_USER="Revanth"
+        export ARCH=arm64
+        export SUBARCH=arm64
+        export ANDROID_MAJOR_VERSION=q
+        DEFCONFIG=exynos9610-m31nsxx_defconfig
+        make $DEFCONFIG
+        make -j"$PROCS"
