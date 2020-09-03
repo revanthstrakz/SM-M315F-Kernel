@@ -19,7 +19,7 @@ jobs:
         chmod +x avbtool
         sudo mv avbtool /usr/local/bin/avbtool
         chmod a+x m31.sh
+        ./m31.sh
     - name: Clone Submodules
       run: git submodule update --init --recursive --depth 1
-           ./m31.sh
         
