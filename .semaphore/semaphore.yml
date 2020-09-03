@@ -10,6 +10,7 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - 'git clone --depth=1 https://github.com/revanthstrakz/SM-M315F-Kernel'
             - ls
             - cd SM-M315F-Kernel
             - git submodule update --init --recursive --depth 1
