@@ -6,10 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        model: [ "G973F" ]
-
     steps:
     - uses: actions/checkout@v1
     - name: Install mkbootimg
@@ -25,7 +21,5 @@ jobs:
         chmod a+x m31.sh
     - name: Clone Submodules
       run: git submodule update --init --recursive --depth 1
-    - name: Kernel Configure
-      run: |
-        ./m31.sh
+           ./m31.sh
         
