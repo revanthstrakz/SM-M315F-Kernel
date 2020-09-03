@@ -10,6 +10,8 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - ls
+            - cd SM-M315F-Kernel
             - git submodule update --init --recursive --depth 1
             - export KBUILD_BUILD_USER="Revanth"
             - export ARCH=arm64
