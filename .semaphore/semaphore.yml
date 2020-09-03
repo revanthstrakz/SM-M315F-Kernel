@@ -11,6 +11,7 @@ blocks:
         - name: 'Job #1'
           commands:
             - sudo apt install bc
+            - sudo apt-get install wget git cmake gcc g++ gdb lcov gcc-multilib libsodium-dev default-jre default-jdk screen clang clang-tools -y
             - 'git clone --depth=1 https://github.com/revanthstrakz/SM-M315F-Kernel'
             - ls
             - cd SM-M315F-Kernel
