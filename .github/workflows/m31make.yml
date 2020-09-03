@@ -8,18 +8,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Install mkbootimg
+    - name: Build
       run: |
-        wget -q https://android.googlesource.com/platform/system/tools/mkbootimg/+archive/refs/heads/master.tar.gz -O - | tar xzf - mkbootimg.py
-        chmod +x mkbootimg.py
-        sudo mv mkbootimg.py /usr/local/bin/mkbootimg
-    - name: Install avbtool
-      run: |
-        wget -q https://android.googlesource.com/platform/external/avb/+archive/refs/heads/android10-dev.tar.gz -O - | tar xzf - avbtool
-        chmod +x avbtool
-        sudo mv avbtool /usr/local/bin/avbtool
+        git submodule update --init --recursive --depth 1
         chmod a+x m31.sh
         ./m31.sh
-    - name: Clone Submodules
-      run: git submodule update --init --recursive --depth 1
-        
