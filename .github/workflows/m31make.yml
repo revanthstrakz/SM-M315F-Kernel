@@ -1,0 +1,31 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        model: [ "G973F" ]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install mkbootimg
+      run: |
+        wget -q https://android.googlesource.com/platform/system/tools/mkbootimg/+archive/refs/heads/master.tar.gz -O - | tar xzf - mkbootimg.py
+        chmod +x mkbootimg.py
+        sudo mv mkbootimg.py /usr/local/bin/mkbootimg
+    - name: Install avbtool
+      run: |
+        wget -q https://android.googlesource.com/platform/external/avb/+archive/refs/heads/android10-dev.tar.gz -O - | tar xzf - avbtool
+        chmod +x avbtool
+        sudo mv avbtool /usr/local/bin/avbtool
+        chmod a+x m31.sh
+    - name: Clone Submodules
+      run: git submodule update --init --recursive --depth 1
+    - name: Kernel Configure
+      run: |
+        ./m31.sh
+        
